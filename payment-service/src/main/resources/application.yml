@@ -27,7 +27,7 @@ feign:
         loggerLevel: basic
 
 order-service:
-  url: http://order-service:8083
+  url: http://localhost:8083
 
 management:
   endpoints:

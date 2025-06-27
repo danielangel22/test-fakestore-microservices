@@ -32,7 +32,7 @@ feign:
         loggerLevel: basic
 
 product-service:
-  url: http://product-service:8082
+  url: http://localhost:8082
 
 management:
   endpoints:
