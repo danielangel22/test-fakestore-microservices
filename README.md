@@ -4,11 +4,11 @@
 ### Este es un proyecto de e-commerce implementado con una arquitectura de microservicios, utilizando Spring Boot y Docker.
 
 ### Prerrequisitos
-```
-Docker y Docker Compose.
 
-Git.
-```
+* Docker y Docker Compose.
+
+* Git.
+
 ### Cómo Levantar el Entorno
 
 ## Sigue estos simples pasos para tener todo funcionando.
@@ -16,7 +16,7 @@ Git.
 ## 1. Clona el Repositorio
 ```
 git clone https://github.com/danielangel22/test-fakestore-microservices.git
-cd <NOMBRE_DEL_PROYECTO>
+cd test-fakestore-microservices
 ```
 
 ## 2. Inicia todos los servicios con Docker Compose
