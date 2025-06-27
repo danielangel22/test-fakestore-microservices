@@ -1,1 +1,191 @@
-{"openapi":"3.0.1","info":{"title":"Auth Service API","description":"API for authentication and authorization","version":"1.0"},"servers":[{"url":"http://localhost:8081","description":"Generated server url"}],"security":[{"bearerAuth":[]}],"tags":[{"name":"Authentication","description":"Authentication APIs"}],"paths":{"/api/auth/login":{"post":{"tags":["Authentication"],"summary":"Authenticate user","description":"Authenticate user and return JWT token","operationId":"login","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/AuthRequest"}}},"required":true},"responses":{"200":{"description":"Authentication successful","content":{"*/*":{"schema":{"$ref":"#/components/schemas/AuthResponse"}}}},"401":{"description":"Unauthorized","content":{"*/*":{"schema":{"$ref":"#/components/schemas/AuthResponse"}}}}}}}},"components":{"schemas":{"AuthRequest":{"required":["password","username"],"type":"object","properties":{"username":{"type":"string"},"password":{"type":"string"}}},"AuthResponse":{"type":"object","properties":{"token":{"type":"string"}}}},"securitySchemes":{"bearerAuth":{"type":"http","scheme":"bearer","bearerFormat":"JWT"}}}}
+{
+	"info": {
+		"_postman_id": "cb4fb12d-8c44-430a-910d-f2a3531543d2",
+		"name": "Auth Service API",
+		"description": "API for authentication and authorization",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9592713"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "login",
+							"item": [
+								{
+									"name": "Authenticate user",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"password\": \"admin123\",\n  \"username\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/auth/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										},
+										"description": "Authenticate user and return JWT token"
+									},
+									"response": [
+										{
+											"name": "Authentication successful",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"deserunt\",\n  \"username\": \"proident\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/auth/login",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"auth",
+														"login"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"token\": \"laboris adipisici\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"password\": \"deserunt\",\n  \"username\": \"proident\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/auth/login",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"auth",
+														"login"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"token\": \"laboris adipisici\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081"
+		}
+	]
+}

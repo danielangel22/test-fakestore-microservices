@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,8 +32,8 @@ public class OrderController {
     @Operation(summary = "Get order by ID", description = "Retrieve order details by order ID")
     @ApiResponse(responseCode = "200", description = "Order found")
     @ApiResponse(responseCode = "404", description = "Order not found")
-    public OrderResponse getOrderById(@PathVariable Long id) {
-        return orderService.getOrderById(id);
+    public ResponseEntity<OrderResponse> getOrderById(@PathVariable Long id) {
+        return ResponseEntity.ok(orderService.getOrderById(id));
     }
 
     @PutMapping("/{id}")

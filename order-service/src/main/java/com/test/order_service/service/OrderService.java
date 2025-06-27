@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,7 +52,7 @@ public class OrderService {
         // Create order
         Order order = Order.builder()
                 .userId(orderRequest.getUserId())
-                .orderDate(LocalDateTime.now())
+                .orderDate(new Date())
                 .totalAmount(totalAmount)
                 .status("CREATED")
                 .build();

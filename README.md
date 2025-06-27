@@ -23,6 +23,9 @@ cd test-fakestore-microservices
 Este comando construirá y levantará todos los contenedores en segundo plano.
 ```
 docker-compose up --build -d
+
+RUN ALL SERVICES MANUAL :)
+
 ```
 
 ***

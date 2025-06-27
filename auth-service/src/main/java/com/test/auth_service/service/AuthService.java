@@ -8,7 +8,6 @@ import com.test.auth_service.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,17 +28,15 @@ public class AuthService {
     }
 
     public AuthResponse authenticate(AuthRequest request) {
-        log.info("consulta");
-        User user = userRepository.findByUsername(request.getUsername()).get();
-        log.info(user.toString());
+
+        User user = userRepository.findByUsername(request.getUsername()).orElseThrow(() -> new BadCredentialsException("Credenciales invalidas"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            log.info("CRedenciales invalidas");
             throw new BadCredentialsException("Credenciales inválidas");
         }
-        log.info("genera");
+
         String token = jwtService.generateToken(user);
-        log.info(token);
+
         return AuthResponse.builder()
                 .token(token)
                 .build();
